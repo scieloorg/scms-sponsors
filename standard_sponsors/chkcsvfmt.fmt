@@ -1,0 +1,11 @@
+[ID]
+data_required=True
+type=Integer
+
+[Standard_Name]
+data_required=False
+type=String
+
+[Standard_Acronym]
+data_required=False
+type=String
