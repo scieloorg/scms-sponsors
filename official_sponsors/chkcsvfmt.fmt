@@ -1,0 +1,7 @@
+[official_name]
+data_required=True
+type=String
+
+[official_acronym]
+data_required=True
+type=String
