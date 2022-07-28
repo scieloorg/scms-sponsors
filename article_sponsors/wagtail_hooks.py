@@ -32,10 +32,10 @@ class ArticleSponsorsAdmin(ModelAdmin):
     menu_order = 100  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = False  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False  # or True to exclude pages of this type from Wagtail's explorer view
-    list_display = ('pid', 'sponsor_name', 'project_id', 'std_id_jac', 'score_jac', 'std_id_sem', 'score_sem')
+    list_display = ('pid', 'sponsor_name', 'project_id')
     # list_filter = ('sponsor_name',)
     search_fields = ('sponsor_name',)
-    list_export = ('pid', 'sponsor_name', 'project_id', 'std_id_jac', 'score_jac', 'std_id_sem', 'score_sem')
+    list_export = ('pid', 'sponsor_name', 'project_id')
     export_filename = 'article_sponsors'
 
 
