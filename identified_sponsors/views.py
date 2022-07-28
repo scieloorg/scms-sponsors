@@ -70,14 +70,18 @@ def import_file(request):
             data = csv.DictReader(csvfile)
 
             for row in data:
-                isd = IdentifiedSponsors()
-                isd.sponsor_name = row['Sponsor_Name']
-                isd.std_id_jac = row['Std_ID_JAC']
-                isd.score_jac = row['Score_JAC']
-                isd.std_id_sem = row['Std_ID_SEM']
-                isd.score_sem = row['Score_SEM']
-                isd.creator = request.user
-                isd.save()
+                try:
+                    isd = IdentifiedSponsors()
+                    isd.declared_name = row['Declared_Sponsor_Name']
+                    isd.official_name = row['Official_Sponsor_Name']
+                    isd.official_acron = row['Official_Sponsor_Acronym']
+                    isd.method = row['Method']
+                    isd.score = row['Score']
+                    isd.creator = request.user
+                    isd.save()
+                except KeyError as ex:
+                    messages.error(request, _("Key error: %s") % ex)
+
     except Exception as ex:
         messages.error(request, _("Import error: %s") % ex)
     else:
