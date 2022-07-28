@@ -8,6 +8,7 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 
 from core.models import CommonControlField
 from .forms import ArticleSponsorsForm, ArticleSponsorsFileForm
+from identified_sponsors.models import IdentifiedSponsors
 
 
 class ArticleSponsors(CommonControlField):
@@ -15,21 +16,13 @@ class ArticleSponsors(CommonControlField):
         verbose_name_plural = _('Article Sponsors')
 
     pid = models.CharField("PID", max_length=255, null=True, blank=True)
-    sponsor_name = models.CharField("Sponsor Name", max_length=255, null=True, blank=True)
+    sponsor_name = models.ForeignKey(IdentifiedSponsors, on_delete=models.SET_NULL, max_length=255, null=True, blank=True)
     project_id = models.CharField("Project ID", max_length=255, null=True, blank=True)
-    std_id_jac = models.IntegerField("ID (Jaccard)", null=True, blank=True)
-    score_jac = models.DecimalField("Score (Jaccard)", max_digits=4, decimal_places=3, null=True, blank=True)
-    std_id_sem = models.IntegerField("ID (Semantic)", null=True, blank=True)
-    score_sem = models.DecimalField("Score (Semantic)", max_digits=4, decimal_places=3, null=True, blank=True)
 
     panels = [
         FieldPanel('pid'),
         FieldPanel('sponsor_name'),
         FieldPanel('project_id'),
-        FieldPanel('std_id_jac'),
-        FieldPanel('score_jac'),
-        FieldPanel('std_id_sem'),
-        FieldPanel('score_sem'),
     ]
 
     base_form_class = ArticleSponsorsForm
