@@ -1,19 +1,19 @@
-[Sponsor_Name]
+[Declared_Sponsor_Name]
 data_required=True
 type=String
 
-[Std_ID_JAC]
-data_required=False
-type=Integer
+[Official_Sponsor_Name]
+data_required=True
+type=String
 
-[Score_JAC]
-data_required=False
-type=Float
+[Official_Sponsor_Acronym]
+data_required=True
+type=String
 
-[Std_ID_SEM]
-data_required=False
-type=Integer
+[Method]
+data_required=True
+type=String
 
-[Score_SEM]
-data_required=False
+[Method]
+data_required=True
 type=Float
