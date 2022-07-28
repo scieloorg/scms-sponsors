@@ -8,24 +8,31 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 
 from core.models import CommonControlField
 from .forms import IdentifiedSponsorsForm, IdentifiedSponsorsFileForm
+from . import choices
 
 
 class IdentifiedSponsors(CommonControlField):
     class Meta:
         verbose_name_plural = _('Identified Sponsors')
 
-    sponsor_name = models.CharField("Sponsor Name", max_length=255, null=True, blank=True)
-    std_id_jac = models.IntegerField("ID (Jaccard)", null=True, blank=True)
-    score_jac = models.DecimalField("Score (Jaccard)", max_digits=4, decimal_places=3, null=True, blank=True)
-    std_id_sem = models.IntegerField("ID (Semantic)", null=True, blank=True)
-    score_sem = models.DecimalField("Score (Semantic)", max_digits=4, decimal_places=3, null=True, blank=True)
+    declared_name = models.CharField(_("Declared Sponsor Name"), max_length=255, default=None, null=True, blank=False)
+    official_name = models.CharField(_("Official Sponsor Name"), max_length=255, default=None, null=True, blank=False)
+    official_acron = models.CharField(_("Official Sponsor Acronym"), max_length=255, default=None, null=True, blank=False)
+    method = models.CharField(_("Identification Method"), max_length=255, choices=choices.IDENTIFICATION_METHOD, default=None, null=True, blank=False)
+    score = models.DecimalField("Score", max_digits=4, decimal_places=3, null=True, blank=False)
+
+    def __unicode__(self):
+        return f"{self.official_name} ({self.official_acron})"
+
+    def __str__(self):
+        return f"{self.official_name} ({self.official_acron})"
 
     panels = [
-        FieldPanel('sponsor_name'),
-        FieldPanel('std_id_jac'),
-        FieldPanel('score_jac'),
-        FieldPanel('std_id_sem'),
-        FieldPanel('score_sem'),
+        FieldPanel('declared_name'),
+        FieldPanel('official_name'),
+        FieldPanel('official_acron'),
+        FieldPanel('method'),
+        FieldPanel('score'),
     ]
 
     base_form_class = IdentifiedSponsorsForm
