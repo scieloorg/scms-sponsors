@@ -232,7 +232,11 @@ def load_sponsor(pid, name, proj):
 
 
 def run():
-    load_sponsor('123', 'fundação arena', '3221')
+    with open('identified_sponsors/scripts/examples.csv', 'r') as csvfile:
+        data = csv.DictReader(csvfile)
+
+        for row in data:
+            load_sponsor(row.get('pid'), row.get('name'), row.get('proj'))
 
 
 if __name__ == '__main__':
