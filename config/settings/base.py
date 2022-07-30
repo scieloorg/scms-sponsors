@@ -103,6 +103,9 @@ THIRD_PARTY_APPS = [
     "wagtailcaptcha",
     "wagtailmenus",
     "rest_framework",
+    "official_sponsors",
+    "article_sponsors",
+    "identified_sponsors",
 ]
 
 LOCAL_APPS = [
