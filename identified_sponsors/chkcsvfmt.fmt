@@ -14,6 +14,6 @@ type=String
 data_required=True
 type=String
 
-[Method]
+[Score]
 data_required=True
 type=Float
