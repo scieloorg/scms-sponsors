@@ -223,11 +223,15 @@ def check_for_sponsor_identified(name):
     return sponsor_identified
 
 
-def load_sponsor(pid, name, proj):
-    article_sponsor = ArticleSponsors()
-    article_sponsor.pid = pid
-    article_sponsor.sponsor_name.add(check_for_sponsor_identified(name))
-    article_sponsor.project_id = proj
+def load_sponsor(pid, name, proj=None):
+    article_sponsor = ArticleSponsors.objects.filter(pid=pid)
+    try:
+        article_sponsor = article_sponsor[0]
+    except IndexError:
+        article_sponsor = ArticleSponsors()
+        article_sponsor.pid = pid
+        article_sponsor.project_id = proj
+    article_sponsor.sponsor_name = check_for_sponsor_identified(name)
     article_sponsor.save()
 
 
