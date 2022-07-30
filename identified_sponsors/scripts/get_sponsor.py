@@ -220,7 +220,7 @@ def check_for_sponsor_identified(name):
     try:
         sponsor_identified = sponsor_identified[0]
     except IndexError:
-        sponsors_official = OfficialSponsorNames.objects.all()
+        sponsors_official = get_official_sponsors()
         sponsor_standard = get_sponsor_names_with_score(name, sponsors_official)
         sponsor_identified = IdentifiedSponsors()
         sponsor_identified.declared_name = name
