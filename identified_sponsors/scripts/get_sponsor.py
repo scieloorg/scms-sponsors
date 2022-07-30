@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*
+from operator import itemgetter
+import csv
+
+from scielo_scholarly_data import standardizer
+import kshingle as ks
+from sentence_transformers import SentenceTransformer, util
 
 from official_sponsors.models import OfficialSponsorNames
 from identified_sponsors.models import IdentifiedSponsors
 from article_sponsors.models import ArticleSponsors
 
-from scielo_scholarly_data import standardizer
-import kshingle as ks
-from sentence_transformers import SentenceTransformer, util
-from operator import itemgetter
 
-
-model = SentenceTransformer('scms-sponsors-1/stmodels/paraphrase-multilingual-MiniLM-L12-v2')
+model = SentenceTransformer('stmodels/paraphrase-multilingual-MiniLM-L12-v2')
 
 
 def make_standard_sponsor(name, acron):
