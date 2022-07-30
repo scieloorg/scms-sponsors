@@ -32,7 +32,7 @@ class IdentifiedSponsorsAdmin(ModelAdmin):
     menu_order = 100  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = False  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False  # or True to exclude pages of this type from Wagtail's explorer view
-    list_display = ('declared_name', 'official_name', 'official_acron', 'method', 'score')
+    list_display = ('declared_name', 'official_name', 'official_acron', 'method', 'score', 'created', 'updated')
     search_fields = ('declared_name', 'official_name', 'official_acron')
     list_export = ('declared_name', 'official_name', 'official_acron')
     export_filename = 'identified_sponsors'
