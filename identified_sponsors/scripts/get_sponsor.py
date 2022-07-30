@@ -206,6 +206,15 @@ def get_sponsor_names_with_score(name, sponsors):
         return semantic[0], 'semantic'
 
 
+def get_official_sponsors():
+    officials = []
+    for item in OfficialSponsorNames.objects.all():
+        name = item.official_sponsor_name
+        acron = item.official_sponsor_acron
+        officials.extend(make_standard_sponsor(name, acron))
+    return officials
+
+
 def check_for_sponsor_identified(name):
     sponsor_identified = IdentifiedSponsors.objects.filter(declared_name=name)
     try:
