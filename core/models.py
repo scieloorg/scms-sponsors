@@ -28,24 +28,24 @@ class CommonControlField(models.Model):
     )
 
     # Creator user
-    creator = models.ForeignKey(
-        User,
-        verbose_name=_("Creator"),
-        related_name="%(class)s_creator",
-        editable=False,
-        on_delete=models.CASCADE,
-    )
+    # creator = models.ForeignKey(
+    #     User,
+    #     verbose_name=_("Creator"),
+    #     related_name="%(class)s_creator",
+    #     editable=False,
+    #     on_delete=models.CASCADE,
+    # )
 
     # Last modifier user
-    updated_by = models.ForeignKey(
-        User,
-        verbose_name=_("Updater"),
-        related_name="%(class)s_last_mod_user",
-        editable=False,
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE,
-    )
+    # updated_by = models.ForeignKey(
+    #     User,
+    #     verbose_name=_("Updater"),
+    #     related_name="%(class)s_last_mod_user",
+    #     editable=False,
+    #     null=True,
+    #     blank=True,
+    #     on_delete=models.CASCADE,
+    # )
 
     class Meta:
         abstract = True
